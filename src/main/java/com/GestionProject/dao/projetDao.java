@@ -5,9 +5,11 @@ import com.GestionProject.model.Projet;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
+import java.util.List;
 
 public class projetDao {
-  public  int inserProjet(Projet projet){
+  public  static int inserProjet(Projet projet){
   String  SQL= "insert into Projet(NomProjet,descriptionProjet,dateDebut,dateFin,budget) value (?,?,?,?,?);";
      int result=0;
 
@@ -34,5 +36,32 @@ public class projetDao {
       return result;
 
   }
+ public  static List displayProject(){
+     List<Projet> projets = new ArrayList<>();
+     String SQL ="select*from Projet;";
+     try {
+         Connection connection = ConnectionBase.getConnection();
+         PreparedStatement pst=connection.prepareStatement(SQL);
+         ResultSet resultSet = pst.executeQuery();
+         while(resultSet.next()){
+             Projet projet = new Projet(
+                     resultSet.getInt("idProjet") ,
+                     resultSet.getString("NomProjet"),
+                     resultSet.getString("descriptionProjet"),
+                     resultSet.getDate("dateDebut"),
+                     resultSet.getDate("dateFin"),
+                     resultSet.getDouble("budget")
+             );
+             //ajouter l'objet projet a la list projets
+             projets.add(projet);
+         }
 
+     } catch (Exception e) {
+         throw new RuntimeException(e);
+     }
+
+
+     return projets;
+
+ }
 }

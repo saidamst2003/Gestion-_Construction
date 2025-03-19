@@ -268,7 +268,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form id="addProjectForm">
+                <form id="addProjectForm" action="AddProjet" method="post">
                     <div class="row mb-3">
                         <div class="col-md-6">
                             <label for="projectName" class="form-label">Nom du projet</label>
@@ -294,12 +294,13 @@
                         <label for="projectBudget" class="form-label">Budget (dh)</label>
                         <input type="number" name="budget" class="form-control" id="projectBudget" min="0" step="1000" required>
                     </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+                        <button type="submit" class="btn btn-blue" >Enregistrer</button>
+                    </div>
                 </form>
             </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
-                <button type="button" class="btn btn-blue" onclick="saveProject()">Enregistrer</button>
-            </div>
+
         </div>
     </div>
 </div>
@@ -469,26 +470,7 @@
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 <script>
-    // JavaScript functions for CRUD operations
-    function saveProject() {
-        // Get form values
-        const name = document.getElementById('projectName').value;
-        const description = document.getElementById('projectDescription').value;
-        const startDate = document.getElementById('projectStartDate').value;
-        const endDate = document.getElementById('projectEndDate').value;
-        const budget = document.getElementById('projectBudget').value;
-        const status = document.getElementById('projectStatus').value;
 
-        // Here you would normally send this data to the server
-        console.log("Saving project:", { name, description, startDate, endDate, budget, status });
-
-        // For demo purposes, just close the modal and show an alert
-        alert("Projet ajouté avec succès!");
-        document.getElementById('addProjectForm').reset();
-        bootstrap.Modal.getInstance(document.getElementById('addProjectModal')).hide();
-
-        // In a real app, you would refresh the table with the new data from the server
-    }
 
     function updateProject() {
         // Get form values

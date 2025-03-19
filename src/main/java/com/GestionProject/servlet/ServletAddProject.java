@@ -1,5 +1,6 @@
 package com.GestionProject.servlet;
 
+import com.GestionProject.dao.projetDao;
 import com.GestionProject.model.Projet;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -13,23 +14,31 @@ import java.sql.Date;
 
 @WebServlet("/AddProjet")
 public class ServletAddProject extends HttpServlet {
-
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
-            String nom = req.getParameter("nomProjet:");
+//creation des variable pour récupération de les entrées de l'utilisateur
+            String nom = req.getParameter("nomProjet");
             String description = req.getParameter("description");
-            String dateDebut =req.getParameter(" dateDebut");
+            String dateDebut =req.getParameter("dateDebut");
+
             Date dateDebuts =Date.valueOf(dateDebut);
             String dateFin =req.getParameter("dateFin");
             Date datefin =Date.valueOf(dateFin);
             String budget  = req.getParameter("budget");
             Double Budget = Double.valueOf(budget);
-            
+
 
         Projet projet = new Projet(nom,description,dateDebuts,datefin,Budget);
 
-           }
+// appel fonction DAO
+        int result = projetDao.inserProjet(projet);
+        if(result>0){
+            System.out.println("Projet valid");
+        }
+      else {
+            System.out.println("Projet not valid");
+        }
 
+           }
 
 }
