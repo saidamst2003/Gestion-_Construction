@@ -1,6 +1,6 @@
 package com.GestionProject.model;
 
-import java.util.Date;
+import java.sql.Date;
 
 public class Projet {
 private int idProjet;
@@ -12,6 +12,14 @@ private double budget ;
 
     public Projet(int idProjet, String nomProjet, String descriptionProjet, Date dateDebut, Date dateFin, double budget) {
         this.idProjet = idProjet;
+         NomProjet = nomProjet;
+        this.descriptionProjet = descriptionProjet;
+        this.dateDebut = dateDebut;
+        this.dateFin = dateFin;
+        this.budget = budget;
+    }
+
+    public Projet(String nomProjet, String descriptionProjet, Date dateDebut, Date dateFin, double budget) {
         NomProjet = nomProjet;
         this.descriptionProjet = descriptionProjet;
         this.dateDebut = dateDebut;
