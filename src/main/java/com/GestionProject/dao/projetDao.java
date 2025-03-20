@@ -36,7 +36,7 @@ public class projetDao {
       return result;
 
   }
- public  static List displayProject(){
+ public  static List<Projet> displayProject(){
      List<Projet> projets = new ArrayList<>();
      String SQL ="select*from Projet;";
      try {

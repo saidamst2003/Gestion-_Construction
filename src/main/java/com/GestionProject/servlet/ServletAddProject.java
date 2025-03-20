@@ -10,13 +10,17 @@ import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
 import java.sql.Date;
+import java.util.List;
 
 
 @WebServlet("/AddProjet")
 public class ServletAddProject extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-//creation des variable pour récupération de les entrées de l'utilisateur
+
+
+        //creation des variable pour récupération de les entrées de l'utilisateur
+
             String nom = req.getParameter("nomProjet");
             String description = req.getParameter("description");
             String dateDebut =req.getParameter("dateDebut");
@@ -30,13 +34,15 @@ public class ServletAddProject extends HttpServlet {
 
         Projet projet = new Projet(nom,description,dateDebuts,datefin,Budget);
 
-// appel fonction DAO
+// appel fonction DAO pour insérer le projet
         int result = projetDao.inserProjet(projet);
         if(result>0){
-            System.out.println("Projet valid");
-        }
-      else {
-            System.out.println("Projet not valid");
+                resp.sendRedirect("DisplayProjetServlet");
+            } else {
+                req.setAttribute("errorMessage", "Erreur lors de l'ajout du projet.");
+//            req.getRequestDispatcher("/gestionProjet.jsp").forward(req, resp);
+            resp.sendRedirect("/DisplayProjetServlet");
+
         }
 
            }

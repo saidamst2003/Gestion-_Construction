@@ -1,5 +1,6 @@
-
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page import="com.GestionProject.model.Projet" %>
+<%@ page import="java.util.List" %>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -162,7 +163,11 @@
                 <i class="fas fa-plus me-2"></i>Nouveau Projet
             </button>
         </div>
-
+        <%
+            List<Projet> projets = (List<Projet>) request.getAttribute("projets");
+            if (projets != null && !projets.isEmpty()) {
+        %>
+        <% for (Projet p : projets) { %>
         <!-- Projects List -->
         <div class="card">
             <div class="card-body">
@@ -176,75 +181,17 @@
                             <th>Date de début</th>
                             <th>Date de fin</th>
                             <th>Budget</th>
-                            <th>Statut</th>
-                            <th>Actions</th>
                         </tr>
                         </thead>
                         <tbody>
                         <tr>
-                            <td>1</td>
-                            <td>Tour Résidentielle Horizon</td>
-                            <td>Construction d'une tour résidentielle de 20 étages</td>
-                            <td>10/03/2025</td>
-                            <td>15/09/2026</td>
-                            <td>1,200,000 €</td>
+                            <td><%=p.getIdProjet()%></td>
+                            <td><%= p.getNomProjet() %></td> <!-- Correction ici, on enlève le > en trop -->
+                            <td><%= p.getDescriptionProjet() %></td> <!-- Correction ici -->
+                            <td><%= p.getDateDebut() %></td> <!-- Correction ici -->
+                            <td><%= p.getDateFin() %></td> <!-- Correction ici -->
+                            <td><%= p.getBudget() %></td> <!-- Correction ici -->
                             <td><span class="badge bg-success">En cours</span></td>
-                            <td>
-                                <button class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#viewTasksModal"><i class="fas fa-tasks me-1"></i></button>
-                                <button class="btn btn-sm btn-info" data-bs-toggle="modal" data-bs-target="#editProjectModal"><i class="fas fa-edit me-1"></i></button>
-                                <button class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#deleteProjectModal"><i class="fas fa-trash me-1"></i></button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>2</td>
-                            <td>Centre Commercial Etoile</td>
-                            <td>Construction d'un centre commercial de 3 étages</td>
-                            <td>22/02/2025</td>
-                            <td>30/06/2026</td>
-                            <td>3,500,000 €</td>
-                            <td><span class="badge bg-primary">Planifié</span></td>
-                            <td>
-                                <button class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#viewTasksModal"><i class="fas fa-tasks me-1"></i></button>
-                                <button class="btn btn-sm btn-info" data-bs-toggle="modal" data-bs-target="#editProjectModal"><i class="fas fa-edit me-1"></i></button>
-                                <button class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#deleteProjectModal"><i class="fas fa-trash me-1"></i></button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>3</td>
-                            <td>Bureaux Zone Tech</td>
-                            <td>Construction d'un immeuble de bureaux modernes</td>
-                            <td>05/01/2025</td>
-                            <td>20/03/2026</td>
-                            <td>850,000 €</td>
-                            <td><span class="badge bg-warning">En retard</span></td>
-                            <td>
-                                <button class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#viewTasksModal"><i class="fas fa-tasks me-1"></i></button>
-                                <button class="btn btn-sm btn-info" data-bs-toggle="modal" data-bs-target="#editProjectModal"><i class="fas fa-edit me-1"></i></button>
-                                <button class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#deleteProjectModal"><i class="fas fa-trash me-1"></i></button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>4</td>
-                            <td>Extension Hôpital Central</td>
-                            <td>Construction d'une aile supplémentaire pour l'hôpital</td>
-                            <td>15/12/2024</td>
-                            <td>10/08/2025</td>
-                            <td>2,700,000 €</td>
-                            <td><span class="badge bg-info">En révision</span></td>
-                            <td>
-                                <button class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#viewTasksModal"><i class="fas fa-tasks me-1"></i></button>
-                                <button class="btn btn-sm btn-info" data-bs-toggle="modal" data-bs-target="#editProjectModal"><i class="fas fa-edit me-1"></i></button>
-                                <button class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#deleteProjectModal"><i class="fas fa-trash me-1"></i></button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>5</td>
-                            <td>Complexe Sportif Municipal</td>
-                            <td>Construction d'un complexe sportif avec piscine et gymnase</td>
-                            <td>08/04/2025</td>
-                            <td>12/12/2026</td>
-                            <td>4,200,000 €</td>
-                            <td><span class="badge bg-secondary">À venir</span></td>
                             <td>
                                 <button class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#viewTasksModal"><i class="fas fa-tasks me-1"></i></button>
                                 <button class="btn btn-sm btn-info" data-bs-toggle="modal" data-bs-target="#editProjectModal"><i class="fas fa-edit me-1"></i></button>
@@ -256,8 +203,11 @@
                 </div>
             </div>
         </div>
+        <% } %>
+        <% } %>
     </div>
 </main>
+
 
 <!-- Add Project Modal -->
 <div class="modal fade" id="addProjectModal" tabindex="-1" aria-hidden="true">
@@ -274,7 +224,6 @@
                             <label for="projectName" class="form-label">Nom du projet</label>
                             <input type="text" class="form-control" name="nomProjet" id="projectName" required>
                         </div>
-
                     </div>
                     <div class="mb-3">
                         <label for="projectDescription" class="form-label">Description</label>
@@ -296,14 +245,14 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
-                        <button type="submit" class="btn btn-blue" >Enregistrer</button>
+                        <button type="submit" class="btn btn-blue">Enregistrer</button>
                     </div>
                 </form>
             </div>
-
         </div>
     </div>
 </div>
+
 
 <!-- Edit Project Modal -->
 <div class="modal fade" id="editProjectModal" tabindex="-1" aria-hidden="true">
