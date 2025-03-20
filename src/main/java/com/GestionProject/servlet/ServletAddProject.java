@@ -40,7 +40,6 @@ public class ServletAddProject extends HttpServlet {
                 resp.sendRedirect("DisplayProjetServlet");
             } else {
                 req.setAttribute("errorMessage", "Erreur lors de l'ajout du projet.");
-//            req.getRequestDispatcher("/gestionProjet.jsp").forward(req, resp);
             resp.sendRedirect("/DisplayProjetServlet");
 
         }

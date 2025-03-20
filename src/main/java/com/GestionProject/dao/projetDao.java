@@ -5,6 +5,7 @@ import com.GestionProject.model.Projet;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -63,5 +64,18 @@ public class projetDao {
 
      return projets;
 
- }
+  }
+    public  static void SupprimerProjet(int idProjet) {
+      String Sql="delete from Projet where idProjet = ?;";
+        try {
+            Connection connection = ConnectionBase.getConnection();
+            PreparedStatement pst = connection.prepareStatement(Sql);
+
+            pst.setInt(1,idProjet);
+            pst.executeUpdate();
+
+            } catch(SQLException e){
+               e.printStackTrace();
+            }
+        }
 }

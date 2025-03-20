@@ -195,7 +195,11 @@
                             <td>
                                 <button class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#viewTasksModal"><i class="fas fa-tasks me-1"></i></button>
                                 <button class="btn btn-sm btn-info" data-bs-toggle="modal" data-bs-target="#editProjectModal"><i class="fas fa-edit me-1"></i></button>
-                                <button class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#deleteProjectModal"><i class="fas fa-trash me-1"></i></button>
+                                <form action="SupprimerProject" method="post">
+                                    <input type="hidden" name="idProjet" value="<%= p.getIdProjet() %>">
+                                    <button class="btn btn-sm btn-danger"  data-bs-toggle="modal" data-bs-target="#deleteProjectModal"><i class="fas fa-trash me-1"></i></button>
+                                </form>
+
                             </td>
                         </tr>
                         </tbody>
