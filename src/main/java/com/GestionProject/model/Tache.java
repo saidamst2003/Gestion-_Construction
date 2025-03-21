@@ -2,14 +2,14 @@ package com.GestionProject.model;
 
 import java.util.Date;
 
-public class tache {
+public class Tache {
 private int  idtache;
 private String descriptionTache;
 private Date dateDebutTache;
 private Date dateFintTache;
 private int idProjet;
 
-    public tache(int idtache, String descriptionTache, Date dateDebutTache, Date dateFintTache, int idProjet) {
+    public Tache(int idtache, String descriptionTache, Date dateDebutTache, Date dateFintTache, int idProjet) {
         this.idtache = idtache;
         this.descriptionTache = descriptionTache;
         this.dateDebutTache = dateDebutTache;
@@ -17,7 +17,7 @@ private int idProjet;
         this.idProjet = idProjet;
     }
 
-    public tache() {
+    public Tache() {
     }
 
     public int getIdtache() {
