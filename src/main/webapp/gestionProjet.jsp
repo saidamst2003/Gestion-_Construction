@@ -11,39 +11,14 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         body {
-            background-color: #f8f9fa;
+            background: url('img/j.jpg') no-repeat center center fixed;
+            background-size: cover;
         }
-        .sidebar {
-            position: fixed;
-            top: 0;
-            bottom: 0;
-            left: 0;
-            z-index: 100;
-            padding: 48px 0 0;
-            box-shadow: inset -1px 0 0 rgba(0, 0, 0, .1);
-            background-color: #2b5797;
-        }
-        .sidebar-sticky {
-            height: calc(100vh - 48px);
-            overflow-x: hidden;
-            overflow-y: auto;
-        }
-        .sidebar .nav-link {
-            font-weight: 500;
-            color: #f8f9fa;
-            padding: 10px 20px;
-        }
-        .sidebar .nav-link:hover {
-            background-color: rgba(255, 255, 255, 0.1);
-        }
-        .sidebar .nav-link.active {
-            background-color: rgba(255, 255, 255, 0.2);
-        }
+
         .sidebar .nav-link i {
             margin-right: 8px;
         }
         .main-content {
-            margin-left: 240px;
             padding: 20px;
         }
         .navbar {
@@ -80,11 +55,7 @@
             color: white;
         }
         @media (max-width: 767.98px) {
-            .sidebar {
-                width: 100%;
-                position: relative;
-                padding-top: 0;
-            }
+
             .main-content {
                 margin-left: 0;
             }
@@ -93,36 +64,35 @@
 </head>
 <body>
 <!-- Navbar -->
-<nav class="navbar navbar-expand-lg fixed-top">
+<nav class="navbar navbar-expand-lg navbar-light bg-white fixed-top shadow">
     <div class="container-fluid">
-        <a class="navbar-brand" href="home.jsp"><i class="fas fa-hard-hat me-2"></i>ConstructionXpert</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+
+        <a class="navbar-brand fw-bold text-primary" href="home.jsp">
+            <i class="fas fa-hard-hat me-2"></i>ConstructionXpert
+        </a>
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
 
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                    <a class="nav-link active me-3" href="Dashboard.jsp">
+                        <i class="fas fa-tachometer-alt"></i> Tableau de bord
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link me-3" href="/Gestion_de_Projets/DisplayProjetServlet">
+                        <i class="fas fa-project-diagram"></i> Projets
+                    </a>
+                </li>
+            </ul>
+        </div>
     </div>
 </nav>
 
-
-<nav id="sidebar" class="col-md-3 col-lg-2 d-md-block sidebar">
-    <div class="position-sticky sidebar-sticky">
-        <ul class="nav flex-column">
-            <li class="nav-item">
-                <a class="nav-link" href="Dashboard.jsp">
-                    <i class="fas fa-tachometer-alt"></i>
-                    Tableau de bord
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link active" href="/Gestion_de_Projets/DisplayProjetServlet">
-                    <i class="fas fa-project-diagram"></i>
-                    Projets
-                </a>
-            </li>
-
-        </ul>
-    </div>
-</nav>
 
 <!-- Main Content -->
 <main class="main-content">
