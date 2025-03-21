@@ -6,7 +6,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ConstructionXpert Services - Gestion des Projets</title>
+    <title>ConstructionXpert </title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
@@ -95,7 +95,7 @@
 <!-- Navbar -->
 <nav class="navbar navbar-expand-lg fixed-top">
     <div class="container-fluid">
-        <a class="navbar-brand" href="#"><i class="fas fa-hard-hat me-2"></i>ConstructionXpert</a>
+        <a class="navbar-brand" href="home.jsp"><i class="fas fa-hard-hat me-2"></i>ConstructionXpert</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -145,7 +145,7 @@
                     <table class="table table-hover">
                         <thead>
                         <tr>
-                            <th>#</th>
+
                             <th>Nom du Projet</th>
                             <th>Description</th>
                             <th>Date de début</th>
@@ -155,13 +155,12 @@
                         </thead>
                         <tbody>
                         <tr>
-                            <td><%=p.getIdProjet()%></td>
+
                             <td><%= p.getNomProjet() %></td>
                             <td><%= p.getDescriptionProjet() %></td>
                             <td><%= p.getDateDebut() %></td>
                             <td><%= p.getDateFin() %></td>
                             <td><%= p.getBudget() %></td>
-                            <td><span class="badge bg-success">En cours</span></td>
                             <td>
                                 <button class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#viewTasksModal"><i class="fas fa-tasks me-1"></i></button>
                                 <%-- modifier un projet--%>
@@ -245,7 +244,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form id= "editProjectForm" action= "updateProjet" method= "post">
+                <form id= "editProjectForm" action= "/Gestion_de_Projets/DisplayProjetServlet" method= "post">
                     <div class="row mb-3">
                         <input type="hidden" id="editId"  name= "idProjet" >
 

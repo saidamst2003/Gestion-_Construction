@@ -1,5 +1,4 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -53,29 +52,20 @@
             color: #2b5797;
             font-weight: bold;
         }
-        .card {
-            margin-bottom: 20px;
-            border: none;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-        }
-        .card-header {
-            background-color: #ffffff;
-            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-            font-weight: bold;
-        }
-        .stats-icon {
+        .main-content {
+            margin-left: 240px;
+            padding: 20px;
+            background: url('img/j.jpg') no-repeat center center;
+            background-size: cover;
+            height: 95vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
             font-size: 2rem;
-            color: #ffa500;
-        }
-        .btn-orange {
-            background-color: #ffa500;
-            border-color: #ffa500;
-            color: white;
-        }
-        .btn-orange:hover {
-            background-color: #e69500;
-            border-color: #e69500;
-            color: white;
+            font-weight: bold;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+          margin-top: 20px ;
         }
         @media (max-width: 767.98px) {
             .sidebar {
@@ -122,56 +112,9 @@
     </div>
 </nav>
 
-<!-- Main Content -->
-<main class="main-content">
-    <div class="container-fluid pt-5 mt-3">
-        <h1 class="h2 mb-4">Tableau de bord</h1>
-
-        <!-- Stats Cards -->
-        <div class="row">
-            <div class="col-md-3">
-                <div class="card">
-                    <div class="card-body d-flex align-items-center">
-                        <div class="stats-icon me-3">
-                            <i class="fas fa-project-diagram"></i>
-                        </div>
-                        <div>
-                            <h5 class="card-title mb-0">Projets</h5>
-                            <h2 class="mt-2 mb-0">12</h2>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-        <!-- Recent Projects -->
-        <div class="row mt-4">
-            <div class="col-md-6">
-                <div class="card">
-                    <div class="card-header d-flex justify-content-between align-items-center">
-                        <span>Projets récents</span>
-                        <a href="/Gestion_de_Projets/DisplayProjetServlet" class="btn btn-sm btn-orange">Voir tout</a>
-                    </div>
-                    <div class="card-body">
-                        <div class="table-responsive">
-                            <table class="table table-hover">
-                                <thead>
-                                <tr>
-                                    <th>Nom</th>
-                                    <th>Date de début</th>
-                                    <th>Budget</th>
-                                </tr>
-                                </thead>
-
-                            </table>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    </div>
-</main>
-
+<div class="main-content">
+    Bienvenu à votre espace
+</div>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
