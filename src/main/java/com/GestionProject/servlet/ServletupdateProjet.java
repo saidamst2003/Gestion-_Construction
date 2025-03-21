@@ -27,6 +27,14 @@ public class ServletupdateProjet extends HttpServlet {
 
         Projet projet = new Projet(idProjett, nom, description, dateDebuts, datefin, Budget);
 
+// appel fonction DAO pour insérer le projet
+        boolean result = projetDao.updateProjet(projet);
+        if (result) {
+            req.getRequestDispatcher("DisplayProjetServlet").forward(req, resp);
+        } else {
+            req.setAttribute("errorMessage", "Erreur lors de la mise à jour du projet.");
+            req.getRequestDispatcher("DisplayProjetServlet").forward(req, resp);
+        }
     }
 }
 
