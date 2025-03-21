@@ -10,7 +10,7 @@ import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
 import java.sql.Date;
-import java.util.List;
+
 
 
 @WebServlet("/AddProjet")
@@ -30,7 +30,6 @@ public class ServletAddProject extends HttpServlet {
             Date datefin =Date.valueOf(dateFin);
             String budget  = req.getParameter("budget");
             Double Budget = Double.valueOf(budget);
-
 
         Projet projet = new Projet(nom,description,dateDebuts,datefin,Budget);
 

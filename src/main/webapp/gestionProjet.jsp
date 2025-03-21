@@ -127,29 +127,12 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link active" href="projects.html">
+                <a class="nav-link active" href="/DisplayProjetServlet">
                     <i class="fas fa-project-diagram"></i>
                     Projets
                 </a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="tasks.html">
-                    <i class="fas fa-tasks"></i>
-                    Tâches
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="resources.html">
-                    <i class="fas fa-cubes"></i>
-                    Ressources
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="suppliers.html">
-                    <i class="fas fa-truck"></i>
-                    Fournisseurs
-                </a>
-            </li>
+
         </ul>
     </div>
 </nav>
@@ -186,15 +169,23 @@
                         <tbody>
                         <tr>
                             <td><%=p.getIdProjet()%></td>
-                            <td><%= p.getNomProjet() %></td> <!-- Correction ici, on enlève le > en trop -->
-                            <td><%= p.getDescriptionProjet() %></td> <!-- Correction ici -->
-                            <td><%= p.getDateDebut() %></td> <!-- Correction ici -->
-                            <td><%= p.getDateFin() %></td> <!-- Correction ici -->
-                            <td><%= p.getBudget() %></td> <!-- Correction ici -->
+                            <td><%= p.getNomProjet() %></td>
+                            <td><%= p.getDescriptionProjet() %></td>
+                            <td><%= p.getDateDebut() %></td>
+                            <td><%= p.getDateFin() %></td>
+                            <td><%= p.getBudget() %></td>
                             <td><span class="badge bg-success">En cours</span></td>
                             <td>
                                 <button class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#viewTasksModal"><i class="fas fa-tasks me-1"></i></button>
-                                <button class="btn btn-sm btn-info" data-bs-toggle="modal" data-bs-target="#editProjectModal"><i class="fas fa-edit me-1"></i></button>
+                                <%-- modifier un projet--%>
+
+                                <button class="btn btn-sm btn-info" data-bs-toggle="modal"
+                                        onclick="updateProject('<%= p.getIdProjet() %>', '<%= p.getNomProjet() %>', '<%= p.getDescriptionProjet() %>', '<%= p.getDateDebut() %>', '<%= p.getDateFin() %>', '<%= p.getBudget() %>')"
+                                        data-bs-target="#editProjectModal">
+                                    <i class="fas fa-edit me-1"></i>
+                                </button>
+
+                                <%-- suppression de projet--%>
                                 <form action="SupprimerProject" method="post">
                                     <input type="hidden" name="idProjet" value="<%= p.getIdProjet() %>">
                                     <button class="btn btn-sm btn-danger"  data-bs-toggle="modal" data-bs-target="#deleteProjectModal"><i class="fas fa-trash me-1"></i></button>
@@ -259,7 +250,7 @@
 
 
 <!-- Edit Project Modal -->
-<div class="modal fade" id="editProjectModal" tabindex="-1" aria-hidden="true">
+<div class="modal fade" id= "editProjectModal" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
@@ -267,49 +258,44 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form id="editProjectForm">
+                <form id= "editProjectForm" action= "updateProjet" method= "post">
                     <div class="row mb-3">
+                        <input type="hidden" id="editId"  name= "idProjet" >
+
                         <div class="col-md-6">
                             <label for="editProjectName" class="form-label">Nom du projet</label>
-                            <input type="text" class="form-control" id="editProjectName" value="Tour Résidentielle Horizon" required>
-                        </div>
-                        <div class="col-md-6">
-                            <label for="editProjectStatus" class="form-label">Statut</label>
-                            <select class="form-select" id="editProjectStatus" required>
-                                <option value="">-- Sélectionner --</option>
-                                <option value="En cours" selected>En cours</option>
-                                <option value="Planifié">Planifié</option>
-                                <option value="En retard">En retard</option>
-                                <option value="En révision">En révision</option>
-                                <option value="À venir">À venir</option>
-                                <option value="Terminé">Terminé</option>
-                            </select>
+                            <input type="text" class="form-control"  name= "nomProjet" id= "editProjectName" value="Tour Résidentielle Horizon" required>
                         </div>
                     </div>
                     <div class="mb-3">
-                        <label for="editProjectDescription" class="form-label">Description</label>
-                        <textarea class="form-control" id="editProjectDescription" rows="3" required>Construction d'une tour résidentielle de 20 étages</textarea>
+                        <label for="editProjectDescription"  class="form-label">Description</label>
+                        <textarea class="form-control"  name="description" id="editProjectDescription" rows="3" required>Construction d'une tour résidentielle de 20 étages</textarea>
                     </div>
                     <div class="row mb-3">
                         <div class="col-md-6">
-                            <label for="editProjectStartDate" class="form-label">Date de début</label>
-                            <input type="date" class="form-control" id="editProjectStartDate" value="2025-03-10" required>
+                            <label for="editProjectStartDate"  class="form-label">Date de début</label>
+                            <input type="date" class="form-control" name="dateDebut" id="editProjectStartDate" value="2025-03-10" required>
                         </div>
                         <div class="col-md-6">
-                            <label for="editProjectEndDate" class="form-label">Date de fin</label>
-                            <input type="date" class="form-control" id="editProjectEndDate" value="2026-09-15" required>
+                            <label for="editProjectEndDate"  class="form-label">Date de fin</label>
+                            <input type="date" name="dateFin" class="form-control" id="editProjectEndDate" value="2026-09-15" required>
                         </div>
                     </div>
                     <div class="mb-3">
-                        <label for="editProjectBudget" class="form-label">Budget (€)</label>
-                        <input type="number" class="form-control" id="editProjectBudget" value="1200000" min="0" step="1000" required>
+                        <label for="editProjectBudget" class="form-label">Budget (DH)</label>
+                        <input type="number" class="form-control"  name="budget" id= "editProjectBudget" value="1200000" min="0" step="1000" required>
                     </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+                        <button type="submit" class="btn btn-blue" >Mettre à jour</button>
+                    </div>
+
+
                 </form>
             </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
-                <button type="button" class="btn btn-blue" onclick="updateProject()">Mettre à jour</button>
-            </div>
+
+
+
         </div>
     </div>
 </div>
@@ -422,38 +408,25 @@
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
 <script>
-
-
-    function updateProject() {
-        // Get form values
-        const name = document.getElementById('editProjectName').value;
-        const description = document.getElementById('editProjectDescription').value;
-        const startDate = document.getElementById('editProjectStartDate').value;
-        const endDate = document.getElementById('editProjectEndDate').value;
-        const budget = document.getElementById('editProjectBudget').value;
-        const status = document.getElementById('editProjectStatus').value;
-
-        // Here you would normally send this data to the server
-        console.log("Updating project:", { name, description, startDate, endDate, budget, status });
-
-        // For demo purposes, just close the modal and show an alert
-        alert("Projet mis à jour avec succès!");
-        bootstrap.Modal.getInstance(document.getElementById('editProjectModal')).hide();
-
-        // In a real app, you would refresh the table with the new data from the server
+        function updateProject(id, name, description, startDate, endDate, budget) {
+        document.getElementById('editId').value = id;
+        document.getElementById('editProjectName').value = name;
+        document.getElementById('editProjectDescription').value = description;
+        document.getElementById('editProjectStartDate').value = startDate;
+        document.getElementById('editProjectEndDate').value = endDate;
+        document.getElementById('editProjectBudget').value = budget;
     }
 
-    function deleteProject() {
-        // Here you would normally send a delete request to the server
-        console.log("Deleting project");
 
-        // For demo purposes, just close the modal and show an alert
-        alert("Projet supprimé avec succès!");
-        bootstrap.Modal.getInstance(document.getElementById('deleteProjectModal')).hide();
+function deleteProject() {
+ console.log("Deleting project");
 
-        // In a real app, you would remove the row from the table
-    }
+alert("Projet supprimé avec succès!");
+bootstrap.Modal.getInstance(document.getElementById('deleteProjectModal')).hide();
+
+}
 </script>
 </body>
 </html>

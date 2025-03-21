@@ -78,4 +78,28 @@ public class projetDao {
                e.printStackTrace();
             }
         }
+
+    public static boolean updateProjet(Projet projet){
+
+        String sql = "UPDATE projet SET NomProjet=?, descriptionProjet=?, `dateDebut`=?, `dateFin`=?, budget=? WHERE idProjet=?";
+  try( Connection connection = ConnectionBase.getConnection();
+       PreparedStatement pst = connection.prepareStatement(sql)){
+
+           pst.setString(1,projet.getNomProjet());
+           pst.setString(2,projet.getDescriptionProjet());
+           pst.setDate(3,projet.getDateDebut());
+           pst.setDate(4,projet.getDateFin());
+           pst.setDouble(5,projet.getBudget());
+           pst.setInt(6,projet.getIdProjet());
+           return pst.executeUpdate()>0;
+  } catch (SQLException e) {
+     e.printStackTrace();
+     return false;
+  }
+
+
+    }
+
+
+
 }
