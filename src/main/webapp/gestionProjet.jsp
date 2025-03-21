@@ -99,20 +99,7 @@
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
             <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav ms-auto">
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown">
-                        <i class="fas fa-user-circle me-1"></i>Admin
-                    </a>
-                    <ul class="dropdown-menu dropdown-menu-end">
-                        <li><a class="dropdown-item" href="#"><i class="fas fa-user-cog me-2"></i>Profil</a></li>
-                        <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item" href="index.html"><i class="fas fa-sign-out-alt me-2"></i>Déconnexion</a></li>
-                    </ul>
-                </li>
-            </ul>
-        </div>
+
     </div>
 </nav>
 
@@ -127,7 +114,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link active" href="/DisplayProjetServlet">
+                <a class="nav-link active" href="/Gestion_de_Projets/DisplayProjetServlet">
                     <i class="fas fa-project-diagram"></i>
                     Projets
                 </a>
@@ -315,93 +302,6 @@
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
                 <button type="button" class="btn btn-danger" onclick="deleteProject()">Supprimer</button>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- View Tasks Modal -->
-<div class="modal fade" id="viewTasksModal" tabindex="-1" aria-hidden="true">
-    <div class="modal-dialog modal-xl">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title">Tâches du projet: Tour Résidentielle Horizon</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <div class="d-flex justify-content-end mb-3">
-                    <button class="btn btn-orange" data-bs-toggle="modal" data-bs-target="#addTaskModal">
-                        <i class="fas fa-plus me-2"></i>Nouvelle Tâche
-                    </button>
-                </div>
-                <div class="table-responsive">
-                    <table class="table table-hover">
-                        <thead>
-                        <tr>
-                            <th>#</th>
-                            <th>Description</th>
-                            <th>Date de début</th>
-                            <th>Date de fin</th>
-                            <th>Ressources</th>
-                            <th>Statut</th>
-                            <th>Actions</th>
-                        </tr>
-                        </thead>
-                        <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td>Installation des fondations</td>
-                            <td>12/03/2025</td>
-                            <td>25/03/2025</td>
-                            <td>
-                                <span class="badge bg-secondary">Béton</span>
-                                <span class="badge bg-secondary">Acier</span>
-                                <span class="badge bg-secondary">Excavatrice</span>
-                            </td>
-                            <td><span class="badge bg-success">En cours</span></td>
-                            <td>
-                                <button class="btn btn-sm btn-info" data-bs-toggle="modal" data-bs-target="#editTaskModal"><i class="fas fa-edit"></i></button>
-                                <button class="btn btn-sm btn-danger"><i class="fas fa-trash"></i></button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>2</td>
-                            <td>Structure de base (jusqu'au 5ème étage)</td>
-                            <td>26/03/2025</td>
-                            <td>30/04/2025</td>
-                            <td>
-                                <span class="badge bg-secondary">Béton</span>
-                                <span class="badge bg-secondary">Acier</span>
-                                <span class="badge bg-secondary">Grue</span>
-                            </td>
-                            <td><span class="badge bg-primary">Planifié</span></td>
-                            <td>
-                                <button class="btn btn-sm btn-info" data-bs-toggle="modal" data-bs-target="#editTaskModal"><i class="fas fa-edit"></i></button>
-                                <button class="btn btn-sm btn-danger"><i class="fas fa-trash"></i></button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>3</td>
-                            <td>Structure (6ème au 10ème étage)</td>
-                            <td>01/05/2025</td>
-                            <td>15/06/2025</td>
-                            <td>
-                                <span class="badge bg-secondary">Béton</span>
-                                <span class="badge bg-secondary">Acier</span>
-                                <span class="badge bg-secondary">Grue</span>
-                            </td>
-                            <td><span class="badge bg-primary">Planifié</span></td>
-                            <td>
-                                <button class="btn btn-sm btn-info" data-bs-toggle="modal" data-bs-target="#editTaskModal"><i class="fas fa-edit"></i></button>
-                                <button class="btn btn-sm btn-danger"><i class="fas fa-trash"></i></button>
-                            </td>
-                        </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
             </div>
         </div>
     </div>

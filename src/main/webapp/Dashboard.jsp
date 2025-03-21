@@ -97,20 +97,7 @@
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
             <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav ms-auto">
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown">
-                        <i class="fas fa-user-circle me-1"></i>Admin
-                    </a>
-                    <ul class="dropdown-menu dropdown-menu-end">
-                        <li><a class="dropdown-item" href="#"><i class="fas fa-user-cog me-2"></i>Profil</a></li>
-                        <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item" href="index.html"><i class="fas fa-sign-out-alt me-2"></i>Déconnexion</a></li>
-                    </ul>
-                </li>
-            </ul>
-        </div>
+
     </div>
 </nav>
 
@@ -119,35 +106,18 @@
     <div class="position-sticky sidebar-sticky">
         <ul class="nav flex-column">
             <li class="nav-item">
-                <a class="nav-link active" href="dashboard.html">
+                <a class="nav-link active" href="Dashboard.jsp">
                     <i class="fas fa-tachometer-alt"></i>
                     Tableau de bord
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="projects.html">
+                <a class="nav-link" href="/Gestion_de_Projets/DisplayProjetServlet">
                     <i class="fas fa-project-diagram"></i>
                     Projets
                 </a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="tasks.html">
-                    <i class="fas fa-tasks"></i>
-                    Tâches
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="resources.html">
-                    <i class="fas fa-cubes"></i>
-                    Ressources
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="suppliers.html">
-                    <i class="fas fa-truck"></i>
-                    Fournisseurs
-                </a>
-            </li>
+
         </ul>
     </div>
 </nav>
@@ -172,46 +142,6 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-3">
-                <div class="card">
-                    <div class="card-body d-flex align-items-center">
-                        <div class="stats-icon me-3">
-                            <i class="fas fa-tasks"></i>
-                        </div>
-                        <div>
-                            <h5 class="card-title mb-0">Tâches</h5>
-                            <h2 class="mt-2 mb-0">48</h2>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="card">
-                    <div class="card-body d-flex align-items-center">
-                        <div class="stats-icon me-3">
-                            <i class="fas fa-cubes"></i>
-                        </div>
-                        <div>
-                            <h5 class="card-title mb-0">Ressources</h5>
-                            <h2 class="mt-2 mb-0">86</h2>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="card">
-                    <div class="card-body d-flex align-items-center">
-                        <div class="stats-icon me-3">
-                            <i class="fas fa-truck"></i>
-                        </div>
-                        <div>
-                            <h5 class="card-title mb-0">Fournisseurs</h5>
-                            <h2 class="mt-2 mb-0">24</h2>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
 
         <!-- Recent Projects -->
         <div class="row mt-4">
@@ -219,7 +149,7 @@
                 <div class="card">
                     <div class="card-header d-flex justify-content-between align-items-center">
                         <span>Projets récents</span>
-                        <a href="projects.html" class="btn btn-sm btn-orange">Voir tout</a>
+                        <a href="/Gestion_de_Projets/DisplayProjetServlet" class="btn btn-sm btn-orange">Voir tout</a>
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
@@ -229,91 +159,16 @@
                                     <th>Nom</th>
                                     <th>Date de début</th>
                                     <th>Budget</th>
-                                    <th>Statut</th>
                                 </tr>
                                 </thead>
-                                <tbody>
-                                <tr>
-                                    <td>Tour Résidentielle Horizon</td>
-                                    <td>10/03/2025</td>
-                                    <td>1,200,000 €</td>
-                                    <td><span class="badge bg-success">En cours</span></td>
-                                </tr>
-                                <tr>
-                                    <td>Centre Commercial Etoile</td>
-                                    <td>22/02/2025</td>
-                                    <td>3,500,000 €</td>
-                                    <td><span class="badge bg-primary">Planifié</span></td>
-                                </tr>
-                                <tr>
-                                    <td>Bureaux Zone Tech</td>
-                                    <td>05/01/2025</td>
-                                    <td>850,000 €</td>
-                                    <td><span class="badge bg-warning">En retard</span></td>
-                                </tr>
-                                <tr>
-                                    <td>Extension Hôpital Central</td>
-                                    <td>15/12/2024</td>
-                                    <td>2,700,000 €</td>
-                                    <td><span class="badge bg-info">En révision</span></td>
-                                </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-            </div>
 
-            <!-- Recent Tasks -->
-            <div class="col-md-6">
-                <div class="card">
-                    <div class="card-header d-flex justify-content-between align-items-center">
-                        <span>Tâches récentes</span>
-                        <a href="tasks.html" class="btn btn-sm btn-orange">Voir tout</a>
-                    </div>
-                    <div class="card-body">
-                        <div class="table-responsive">
-                            <table class="table table-hover">
-                                <thead>
-                                <tr>
-                                    <th>Description</th>
-                                    <th>Projet</th>
-                                    <th>Date limite</th>
-                                    <th>Statut</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                <tr>
-                                    <td>Installation des fondations</td>
-                                    <td>Tour Résidentielle Horizon</td>
-                                    <td>25/03/2025</td>
-                                    <td><span class="badge bg-success">En cours</span></td>
-                                </tr>
-                                <tr>
-                                    <td>Livraison des matériaux</td>
-                                    <td>Centre Commercial Etoile</td>
-                                    <td>30/03/2025</td>
-                                    <td><span class="badge bg-primary">Planifié</span></td>
-                                </tr>
-                                <tr>
-                                    <td>Installation électrique</td>
-                                    <td>Bureaux Zone Tech</td>
-                                    <td>10/03/2025</td>
-                                    <td><span class="badge bg-danger">Non commencé</span></td>
-                                </tr>
-                                <tr>
-                                    <td>Toiture et isolation</td>
-                                    <td>Extension Hôpital Central</td>
-                                    <td>18/03/2025</td>
-                                    <td><span class="badge bg-warning">En retard</span></td>
-                                </tr>
-                                </tbody>
                             </table>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
     </div>
 </main>
 
