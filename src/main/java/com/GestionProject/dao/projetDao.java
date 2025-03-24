@@ -100,6 +100,20 @@ public class projetDao {
 
     }
 
-
+        public static int countProjets() {
+            int count = 0;
+            try {
+                String sql = "SELECT COUNT(*) FROM Projet";
+                Connection connection = ConnectionBase.getConnection();
+                PreparedStatement pst = connection.prepareStatement(sql);
+                ResultSet rs = pst.executeQuery();
+                if (rs.next()) {
+                    count = rs.getInt(1);
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            return count;
+        }
 
 }

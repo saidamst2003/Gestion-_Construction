@@ -1,6 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page import="com.GestionProject.model.Projet" %>
 <%@ page import="java.util.List" %>
+<%@ page import="com.GestionProject.model.Tache" %>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -132,7 +133,7 @@
                             <td><%= p.getDateFin() %></td>
                             <td><%= p.getBudget() %></td>
                             <td>
-                                <button class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#viewTasksModal"><i class="fas fa-tasks me-1"></i></button>
+                                <button  onclick="openModal(<%= p.getIdProjet()%>)" class="btn btn-sm btn-primary" data-bs-toggle="modal" data-bs-target="#viewTasksModal"><i class="fas fa-tasks me-1"></i></button>
                                 <%-- modifier un projet--%>
 
                                 <button class="btn btn-sm btn-info" data-bs-toggle="modal"
@@ -169,7 +170,8 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form id="addProjectForm" action="AddProjet" method="post">
+                <form id="addProjectForm" action="AddProjet"  method="post">
+
                     <div class="row mb-3">
                         <div class="col-md-6">
                             <label for="projectName" class="form-label">Nom du projet</label>
@@ -256,6 +258,49 @@
     </div>
 </div>
 
+
+<%--ADD TASK--%>
+<div class="modal fade" id="addTaskModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Ajouter une nouvelle tâche</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="addTaskForm" action="AddTach" method="post">
+
+                    <input type="hidden" name="idProjet" id="idProjet">
+
+                    <div class="row mb-3">
+                        <div class="col-md-8">
+                            <label for="taskDescription" class="form-label">Description de la tâche</label>
+                            <input type="text" class="form-control" name="descriptionTache" id="taskDescription" required>
+                        </div>
+
+                    </div>
+
+                    <div class="row mb-3">
+                        <div class="col-md-6">
+                            <label for="taskStartDate" class="form-label">Date de début</label>
+                            <input type="date" class="form-control" name="dateDebutTache" id="taskStartDate" required>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="taskEndDate" class="form-label">Date de fin</label>
+                            <input type="date" class="form-control" name="dateFintTache" id="taskEndDate" required>
+                        </div>
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+                        <button type="submit" class="btn btn-blue">Enregistrer</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
 <!-- Delete Project Modal -->
 <div class="modal fade" id="deleteProjectModal" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog">
@@ -276,6 +321,68 @@
     </div>
 </div>
 
+<!-- View Tasks Modal -->
+
+
+<div class="modal fade" id="viewTasksModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <h5 class="modal-title">Tâches du projet:</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+
+            <div class="modal-body">
+                <div class="d-flex justify-content-end mb-3">
+                    <button class="btn btn-orange" data-bs-toggle="modal" data-bs-target="#addTaskModal">
+                        <i class="fas fa-plus me-2"></i>Nouvelle Tâche</button>
+                </div>
+            </div>
+
+                <div class="table-responsive">
+
+                    <%
+                        List<Tache> taches = (List<Tache>) request.getAttribute("taches");
+                        if (taches != null && !taches.isEmpty()) {
+                    %>
+                    <% for (Tache t : taches) { %>
+                </>
+                    <table class="table table-hover">
+                        <thead>
+                        <tr>
+                            <th>Description</th>
+                            <th>Date de début</th>
+                            <th>Date de fin</th>
+                        </tr>
+                        </thead>
+                    <tbody>
+                        <tr>
+                            <td><%=t.getDescriptionTache()%>></td>
+                            <td><%=t.getDateDebutTache()%></td>
+                            <td><%=t.getDateFintTache()%>></td>
+                        <td>
+                                <span class="badge bg-secondary">Béton</span>
+                                <span class="badge bg-secondary">Acier</span>
+                                <span class="badge bg-secondary">Excavatrice</span>
+                            </td>
+                            <td><span class="badge bg-success">En cours</span></td>
+                            <td>
+                                <button class="btn btn-sm btn-info" data-bs-toggle="modal" data-bs-target="#editTaskModal"><i class="fas fa-edit"></i></button>
+                                <button class="btn btn-sm btn-danger"><i class="fas fa-trash"></i></button>
+                            </td>
+
+                        </tr>
+
+                        </tbody>
+                        <%}
+                        }%>
+
+               </div>
+         </div>
+</div>
+
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
 <script>
@@ -295,6 +402,12 @@ function deleteProject() {
 alert("Projet supprimé avec succès!");
 bootstrap.Modal.getInstance(document.getElementById('deleteProjectModal')).hide();
 
+}
+
+
+function openModal(id){
+            document.getElementById("addTaskModal").style.display='block';
+            document.getElementById("idProjet").value = id;
 }
 </script>
 </body>

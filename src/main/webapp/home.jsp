@@ -63,6 +63,11 @@
                     <a class="nav-link me-3" href="/Gestion_de_Projets/DisplayProjetServlet">
                         <i class="fas fa-project-diagram"></i> Projets</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link active me-3" href="GestionTache.jsp">
+                        <i class="fas fa-tasks"></i> Tâches
+                    </a>
+                </li>
             </ul>
         </div>
     </div>

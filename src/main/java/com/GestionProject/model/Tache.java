@@ -1,6 +1,6 @@
 package com.GestionProject.model;
 
-import java.util.Date;
+import java.sql.Date;
 
 public class Tache {
 private int  idtache;
@@ -17,7 +17,12 @@ private int idProjet;
         this.idProjet = idProjet;
     }
 
-    public Tache() {
+    public Tache(String descriptionTache, Date dateDebutTache, Date dateFinTache, int idProjet) {
+
+        this.descriptionTache = descriptionTache;
+        this.dateDebutTache = dateDebutTache;
+        this.dateFintTache = dateFinTache;
+        this.idProjet = idProjet;
     }
 
     public int getIdtache() {

@@ -17,14 +17,11 @@ import java.sql.Date;
 public class ServletAddProject extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
-
         //creation des variable pour récupération de les entrées de l'utilisateur
 
             String nom = req.getParameter("nomProjet");
             String description = req.getParameter("description");
             String dateDebut =req.getParameter("dateDebut");
-
             Date dateDebuts =Date.valueOf(dateDebut);
             String dateFin =req.getParameter("dateFin");
             Date datefin =Date.valueOf(dateFin);

@@ -15,6 +15,7 @@ import java.util.List;
 @WebServlet("/DisplayProjetServlet")
 public class displayProjetServlet extends HttpServlet {
     @Override
+    //affichege
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         // diclaration List
         List<Projet> Projett = projetDao.displayProject();
@@ -23,6 +24,7 @@ public class displayProjetServlet extends HttpServlet {
     }
 
     @Override
+    //update
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         int idProjett = Integer.parseInt(req.getParameter("idProjet"));
         System.out.println(idProjett);
