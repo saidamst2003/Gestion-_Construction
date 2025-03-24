@@ -151,175 +151,19 @@
 </main>
 
 
-<!-- Add Task Modal -->
-<div class="modal fade" id="addTaskModal" tabindex="-1" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title">Ajouter une nouvelle tâche</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <form id="addTaskForm" action="AddTach" method="post">
-
-                    <div class="row mb-3">
-                        <div class="col-md-8">
-                            <label for="taskDescription" class="form-label">Description de la tâche</label>
-                            <input type="text" class="form-control" name="descriptionTache" id="taskDescription" required>
-                        </div>
-                        <div class="col-md-4">
-                            <label for="taskProject" class="form-label">Projet associé</label>
-                            <select class="form-select" name="idProjet" id="taskProject" required>
-                                <option value="" selected disabled>Sélectionner un projet</option>
-
-                                <option value=""></option>
-                            </select>
-                        </div>
-                    </div>
-
-                    <div class="row mb-3">
-                        <div class="col-md-6">
-                            <label for="taskStartDate" class="form-label">Date de début</label>
-                            <input type="date" class="form-control" name="dateDebutTache" id="taskStartDate" required>
-                        </div>
-                        <div class="col-md-6">
-                            <label for="taskEndDate" class="form-label">Date de fin</label>
-                            <input type="date" class="form-control" name="dateFintTache" id="taskEndDate" required>
-                        </div>
-                    </div>
-
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
-                        <button type="submit" class="btn btn-blue">Enregistrer</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- Edit Task Modal -->
-<div class="modal fade" id="editTaskModal" tabindex="-1" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title">Modifier la tâche</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <form id="editTaskForm" action="/Gestion_de_Projets/UpdateTacheServlet" method="post">
-                    <input type="hidden" id="editTaskId" name="idTache">
-                    <div class="row mb-3">
-                        <div class="col-md-8">
-                            <label for="editTaskDescription" class="form-label">Description de la tâche</label>
-                            <input type="text" class="form-control" name="descriptionTache" id="editTaskDescription" required>
-                        </div>
-                        <div class="col-md-4">
-                            <label for="editTaskProject" class="form-label">Projet associé</label>
-                            <select class="form-select" name="idProjet" id="editTaskProject" required>
-
-                            </select>
-                        </div>
-                    </div>
-                    <div class="row mb-3">
-                        <div class="col-md-6">
-                            <label for="editTaskStartDate" class="form-label">Date de début</label>
-                            <input type="date" class="form-control" name="dateDebutTache" id="editTaskStartDate" required>
-                        </div>
-                        <div class="col-md-6">
-                            <label for="editTaskEndDate" class="form-label">Date de fin</label>
-                            <input type="date" class="form-control" name="dateFintTache" id="editTaskEndDate" required>
-                        </div>
-                    </div>
-                    <div class="row mb-3">
-                        <div class="col-md-6">
-                            <label for="editTaskStatus" class="form-label">Statut</label>
-                            <select class="form-select" name="statusTache" id="editTaskStatus" required>
-                                <option value="En attente">En attente</option>
-                                <option value="En cours">En cours</option>
-                                <option value="Terminée">Terminée</option>
-                                <option value="En retard">En retard</option>
-                            </select>
-                        </div>
-                        <div class="col-md-6">
-                            <label for="editTaskPriority" class="form-label">Priorité</label>
-                            <select class="form-select" name="priorityTache" id="editTaskPriority" required>
-                                <option value="Haute">Haute</option>
-                                <option value="Moyenne">Moyenne</option>
-                                <option value="Basse">Basse</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="row mb-3">
-                        <div class="col-md-6">
-                            <label for="editTaskResponsible" class="form-label">Responsable</label>
-                            <input type="text" class="form-control" name="responsableTache" id="editTaskResponsible">
-                        </div>
-                        <div class="col-md-6">
-                            <label for="editTaskProgress" class="form-label">Progression (%)</label>
-                            <input type="number" class="form-control" name="progressionTache" id="editTaskProgress" min="0" max="100">
-                        </div>
-                    </div>
-                    <div class="mb-3">
-                        <label for="editTaskResources" class="form-label">Ressources nécessaires</label>
-                        <input type="text" class="form-control" name="ressourcesTache" id="editTaskResources" placeholder="Béton, Acier, Excavatrice...">
-                        <div class="form-text">Séparez les ressources par des virgules</div>
-                    </div>
-                    <div class="mb-3">
-                        <label for="editTaskNotes" class="form-label">Notes additionnelles</label>
-                        <textarea class="form-control" name="notesTache" id="editTaskNotes" rows="3"></textarea>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
-                        <button type="submit" class="btn btn-blue">Mettre à jour</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- Delete Task Modal -->
-<div class="modal fade" id="deleteTaskModal" tabindex="-1" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title">Confirmer la suppression</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <p>Êtes-vous sûr de vouloir supprimer cette tâche? Cette action est irréversible.</p>
-                <form id="deleteTaskForm" action="/Gestion_de_Projets/DeleteTacheServlet" method="post">
-                    <input type="hidden" id="deleteTaskId" name="idTache">
-                </form>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
-                <button type="button" class="btn btn-danger" onclick="document.getElementById('deleteTaskForm').submit()">Supprimer</button>
-            </div>
-        </div>
-    </div>
-</div>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 <script>
-    // Function to populate the edit task modal
     function editTask(taskId) {
-        // In a real application, you would fetch the task data from the server
-        // For now, I'll just set placeholder values
+
         document.getElementById('editTaskId').value = taskId;
 
-        // Example of populating fields with data from backend
-        // This would be replaced with actual data in production
         document.getElementById('editTaskDescription').value = "Fondation bâtiment principal";
         document.getElementById('editTaskStartDate').value = "2025-04-01";
         document.getElementById('editTaskEndDate').value = "2025-04-15";
-        document.getElementById('editTaskStatus').value = "En cours";
-        document.getElementById('editTaskPriority').value = "Haute";
         document.getElementById('editTaskResponsible').value = "John Doe";
         document.getElementById('editTaskProgress').value = "75";
         document.getElementById('editTaskResources').value = "Béton, Acier, Excavatrice";
-        document.getElementById('editTaskNotes').value = "Attention aux spécifications techniques pour le béton armé.";
     }
 
     // Function to set the task ID for deletion
