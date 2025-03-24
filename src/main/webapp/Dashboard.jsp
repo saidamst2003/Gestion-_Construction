@@ -64,7 +64,7 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-white fixed-top shadow">
     <div class="container-fluid">
         <!-- Logo -->
-        <a class="navbar-brand fw-bold text-primary" href="home.jsp">
+        <a class="navbar-brand fw-bold text-primary" href="index.jsp">
             <i class="fas fa-hard-hat me-2"></i>ConstructionXpert
         </a>
 
@@ -85,6 +85,11 @@
                 <li class="nav-item">
                     <a class="nav-link me-3" href="/Gestion_de_Projets/DisplayProjetServlet">
                         <i class="fas fa-project-diagram"></i> Projets
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active me-3" href="DisplayTache">
+                        <i class="fas fa-tasks"></i> Tâches
                     </a>
                 </li>
             </ul>

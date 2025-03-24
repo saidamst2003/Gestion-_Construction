@@ -47,7 +47,7 @@
 <!-- Navbar -->
 <nav class="navbar navbar-expand-lg navbar-light bg-white fixed-top shadow">
     <div class="container-fluid">
-        <a class="navbar-brand fw-bold text-primary" href="home.jsp">
+        <a class="navbar-brand fw-bold text-primary" href="index.jsp">
             <i class="fas fa-hard-hat me-2"></i>ConstructionXpert
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -64,7 +64,7 @@
                         <i class="fas fa-project-diagram"></i> Projets</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link active me-3" href="GestionTache.jsp">
+                    <a class="nav-link active me-3" href="DisplayTache">
                         <i class="fas fa-tasks"></i> Tâches
                     </a>
                 </li>

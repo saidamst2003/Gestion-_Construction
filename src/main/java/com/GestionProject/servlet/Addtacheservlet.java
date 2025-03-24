@@ -16,28 +16,22 @@ import java.sql.Date;
 public class Addtacheservlet extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-
-
             // Récupération des paramètres du formulaire
             String descriptionTache = request.getParameter("descriptionTache");
-        System.out.println(descriptionTache);
+            System.out.println(descriptionTache);
             Date dateDebutTache = Date.valueOf(request.getParameter("dateDebutTache"));
             Date dateFinTache = Date.valueOf(request.getParameter("dateFintTache"));
             int idProjet = Integer.parseInt(request.getParameter("idProjet"));
 
-            Tache tache = new Tache(descriptionTache, dateDebutTache, dateFinTache, idProjet);
+                 Tache tache = new Tache(descriptionTache, dateDebutTache, dateFinTache, idProjet);
 
-            int result = TacheDao.inserTache(tache);
-
-            if (result > 0) {
+        int result = TacheDao.inserTache(tache);
+        if (result > 0) {
                 response.sendRedirect("DisplayTache");
-            } else {
+        } else {
                 request.setAttribute("errorMessage", "Erreur lors de l'ajout de la tâche.");
                 response.sendRedirect("DisplayTache");
-
-            }
-
+        }
     }
 }
 
