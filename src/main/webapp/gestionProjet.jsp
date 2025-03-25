@@ -90,7 +90,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link active me-3" href="GestionTache.jsp">
+                    <a class="nav-link active me-3" href="/Gestion_de_Projets/DisplayTache">
                         <i class="fas fa-tasks"></i> Tâches
                     </a>
                 </li>
@@ -175,7 +175,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form id="addProjectForm" action="AddProjet"  method="post">
+                <form id="addProjectForm" action="AddProjet"  method="post" onsubmit="return validateProjectForm()">
 
                     <div class="row mb-3">
                         <div class="col-md-6">
@@ -221,7 +221,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form id= "editProjectForm" action= "/Gestion_de_Projets/DisplayProjetServlet" method= "post">
+                <form id= "editProjectForm" action= "/Gestion_de_Projets/DisplayProjetServlet" method= "post"  onsubmit="return validateEditProjectForm()">
                     <div class="row mb-3">
                         <input type="hidden" id="editId"  name= "idProjet" >
 
@@ -273,7 +273,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form id="addTaskForm" action="AddTach" method="post">
+                <form id="addTaskForm" action="AddTach" method="post"   onsubmit="return validateTaskForm()">
 
                     <input type="hidden" name="idProjet" id="idProjet">
 
@@ -366,12 +366,7 @@
                             <td><%=t.getDescriptionTache()%>></td>
                             <td><%=t.getDateDebutTache()%></td>
                             <td><%=t.getDateFintTache()%>></td>
-                        <td>
-                                <span class="badge bg-secondary">Béton</span>
-                                <span class="badge bg-secondary">Acier</span>
-                                <span class="badge bg-secondary">Excavatrice</span>
-                            </td>
-                            <td><span class="badge bg-success">En cours</span></td>
+
                             <td>
                                 <button class="btn btn-sm btn-info" data-bs-toggle="modal" data-bs-target="#editTaskModal"><i class="fas fa-edit"></i></button>
                                 <button class="btn btn-sm btn-danger"><i class="fas fa-trash"></i></button>
@@ -400,13 +395,10 @@
         document.getElementById('editProjectBudget').value = budget;
     }
 
-
 function deleteProject() {
  console.log("Deleting project");
-
 alert("Projet supprimé avec succès!");
 bootstrap.Modal.getInstance(document.getElementById('deleteProjectModal')).hide();
-
 }
 
 
@@ -414,6 +406,78 @@ function openModal(id){
             document.getElementById("addTaskModal").style.display='block';
             document.getElementById("idProjet").value = id;
 }
+
+
+       // Validation du d'ajout  de modification de projet
+        function validateProjectForm() {
+            let name = document.getElementById("projectName").value.trim();
+            let description = document.getElementById("projectDescription").value.trim();
+            let startDate = document.getElementById("projectStartDate").value;
+            let endDate = document.getElementById("projectEndDate").value;
+            let budget = document.getElementById("projectBudget").value;
+
+            if (name === "" || description === "" || startDate === "" || endDate === "" || budget === "") {
+                alert("Tous les champs sont obligatoires !");
+                return false;
+            }
+
+            if (new Date(startDate) >= new Date(endDate)) {
+                alert("La date de début doit être antérieure à la date de fin !");
+                return false;
+            }
+
+            if (budget <= 0) {
+                alert("Le budget doit être un nombre positif !");
+                return false;
+            }
+
+            return true;
+        }
+
+        //Validation du formulaire de modification de projet
+        function validateEditProjectForm() {
+            let name = document.getElementById("editProjectName").value.trim();
+            let description = document.getElementById("editProjectDescription").value.trim();
+            let startDate = document.getElementById("editProjectStartDate").value;
+            let endDate = document.getElementById("editProjectEndDate").value;
+            let budget = document.getElementById("editProjectBudget").value;
+
+            if (name === "" || description === "" || startDate === "" || endDate === "" || budget === "") {
+                alert("Tous les champs sont obligatoires !");
+                return false;
+            }
+
+            if (new Date(startDate) >= new Date(endDate)) {
+                alert("La date de début doit être antérieure à la date de fin !");
+                return false;
+            }
+
+            if (budget <= 0) {
+                alert("Le budget doit être un nombre positif !");
+                return false;
+            }
+
+            return true;
+        }
+     //   Validation du formulaire d'ajout de tâche
+        function validateTaskForm() {
+            let description = document.getElementById("taskDescription").value.trim();
+            let startDate = document.getElementById("taskStartDate").value;
+            let endDate = document.getElementById("taskEndDate").value;
+
+            if (description === "" || startDate === "" || endDate === "") {
+                alert("Tous les champs sont obligatoires !");
+                return false;
+            }
+
+            if (new Date(startDate) >= new Date(endDate)) {
+                alert("La date de début doit être antérieure à la date de fin !");
+                return false;
+            }
+
+            return true;
+        }
+
 </script>
 </body>
 </html>

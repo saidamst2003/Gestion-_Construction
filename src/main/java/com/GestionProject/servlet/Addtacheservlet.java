@@ -30,7 +30,7 @@ public class Addtacheservlet extends HttpServlet {
                 response.sendRedirect("DisplayTache");
         } else {
                 request.setAttribute("errorMessage", "Erreur lors de l'ajout de la tâche.");
-                response.sendRedirect("DisplayTache");
+                response.sendRedirect("DioosplayTache");
         }
     }
 }

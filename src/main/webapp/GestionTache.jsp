@@ -95,7 +95,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link active me-3" href="GestionTache.jsp">
+                    <a class="nav-link active me-3" href="/Gestion_de_Projets/DisplayTache">
                         <i class="fas fa-tasks"></i> Tâches
                     </a>
                 </li>
